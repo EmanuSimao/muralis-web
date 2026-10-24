@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const ICONS_FOLDER = "./src/assets/icons";
+const ICONS_FOLDER = "frontend/src/assets/icons/";
 
 function cleanSvg(svg) {
     // Remove XML e DOCTYPE

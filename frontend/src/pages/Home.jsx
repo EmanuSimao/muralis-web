@@ -7,6 +7,7 @@ import slides from '../assets/slides'
 import SearchIcon from '../assets/icons/search-icon.svg?react'
 import FilterIcon from '../assets/icons/filter-icon.svg?react'
 import LocationIcon from '../assets/icons/location-icon.svg?react'
+import Footer from "../components/Footer"
 import { useState } from "react"
 import SobreContainer from "../components/SobreContainer"
 
@@ -88,6 +89,27 @@ function Home() {
             <div className="">
                 <SobreContainer />
             </div>
+
+            {/* Newsletter */}
+            <div className="w-full mx-auto p-10 m-10 text-center">
+                <div className="flex flex-col justify-center md:flex-col gap-6">
+                    <div className="text-4xl text-newsletter">
+                        <p>junta-te à comunidade MURA.LIS</p>
+                        <p>descobre histórias, criadores e eventos locais</p>
+                    </div>
+                    <div className="flex flex-row justify-around mx-auto items-center bg-register rounded-full w-150 text-center">
+                        <div className="grow py-2">
+                            <input type="email" name="email" id="email" placeholder="introduza o seu e-mail" />
+                        </div>
+                        <div className="flex-none py-2 bg-gray-400 rounded-r-full text-center text-white">
+                            <input className="mx-4 px-2" type="submit" value="subscrever" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer */}
+            <Footer />
         </div>
     )
 }

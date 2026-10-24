@@ -1,7 +1,7 @@
-import Contact from '../assets/icons/contacta-icon.svg?react'
-import Find from '../assets/icons/descobre-icon.svg?react'
-import Explore from '../assets/icons/eplora-icon.svg?react'
-import Speak from '../assets/icons/falar-icon.svg?react'
+import Contact from '../assets/icons/about/contacta-icon.svg?react'
+import Find from '../assets/icons/about/descobre-icon.svg?react'
+import Explore from '../assets/icons/about/eplora-icon.svg?react'
+import Speak from '../assets/icons/about/falar-icon.svg?react'
 
 const sobreContainers = [
     {
