@@ -74,7 +74,7 @@ export default function CategoriesCards() {
                 </button>
 
                 {/* Carrossel */}
-                <div className="my-15 overflow-hidden flex-1 min-w-0" ref={emblaRef}>
+                <div className="overflow-hidden flex-1 min-w-0" ref={emblaRef}>
                     <div className="flex">
                         {categorias.map((categoria) => (
                             // <div key={categoria.id} className="rounded-xl flex-none w-1/2 md:w-1/3 xl:w-1/5 ">

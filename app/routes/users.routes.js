@@ -4,6 +4,6 @@ const controller = require('../controllers/users.controller');
 
 router.get('/', controller.findAll);
 router.get('/:id', controller.findOne);
-router.post('/', controller.create);
+router.post('/register', controller.create);
 
 module.exports = router;

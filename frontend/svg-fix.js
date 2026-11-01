@@ -49,6 +49,12 @@ function cleanSvg(svg) {
     return svg;
 }
 
+function processFile(filePath) {
+    const svg = fs.readFileSync(filePath, "utf8");
+    fs.writeFileSync(filePath, cleanSvg(svg));
+    console.log(`${filePath}`);
+}
+
 function walk(folder) {
     const files = fs.readdirSync(folder);
 
@@ -60,12 +66,47 @@ function walk(folder) {
             continue;
         }
 
-        if (!file.endsWith(".svg")) continue;
-
-        const svg = fs.readFileSync(filePath, "utf8");
-
-        fs.writeFileSync(filePath, cleanSvg(svg));
+        if (file.endsWith(".svg")) processFile(filePath);        
     }
 }
 
-walk(ICONS_FOLDER);
+function resolveIconPath(arg) {
+    // 1. Caminho direto (relativo ao cwd ou absoluto)
+    // 2. Relativo à pasta de ícones
+    // 3. Só o nome, com ou sem extensão .svg
+    const candidates = [
+        arg,
+        path.join(ICONS_FOLDER, arg),
+        path.join(ICONS_FOLDER, arg.endsWith(".svg") ? arg : `${arg}.svg`),
+    ];
+
+    return candidates.find(
+        (p) => fs.existsSync(p) && fs.statSync(p).isFile()
+    );
+}
+
+function main() {
+    const arg = process.argv[2];
+
+    // Sem argumentos: processa a pasta toda
+    if (!arg) {
+        walk(ICONS_FOLDER);
+        return;
+    }
+
+    const iconPath = resolveIconPath(arg);
+
+    if (!iconPath) {
+        console.error(`Ícone não encontrado: "${arg}"`);
+        process.exit(1);
+    }
+
+    if (!iconPath.endsWith(".svg")) {
+        console.error(`O ficheiro não é um SVG: "${iconPath}"`);
+        process.exit(1);
+    }
+
+    processFile(iconPath);
+}
+
+main();

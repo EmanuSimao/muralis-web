@@ -24,20 +24,43 @@ export default function NavBar({ links = [], brand = { to: '/', label: 'Muralis'
 
                 {/* Links de Navegação */}
                 <div className="navbar-links hidden items-center gap-2 md:flex">
-                    {links.map(({ to, label, icon: Icon, iconOnly = false, className = '' }) => (
-                        <Link
-                            key={to}
-                            to={to}
-                            className={`text-gray-500 ${className}`.trim()}
-                            aria-label={iconOnly ? label : undefined}
-                            title={iconOnly ? label : undefined}
-                        >
-                            {                            
-                                Icon && <Icon className="navbar-link-icon w-8 h-8 text-gray-500 hover:text-orange-500" />
-                            }
-                            {!iconOnly && label}
-                        </Link>
-                    ))}
+                    {links.map(({ to, label, icon: Icon, iconOnly = false, className = '', onClick }) => {
+                        const classes = `text-gray-500 ${className}`.trim();
+                        const content = (
+                            <>
+                                {Icon && <Icon className="navbar-link-icon w-8 h-8 text-gray-500 hover:text-orange-500" />}
+                                {!iconOnly && label}
+                            </>
+                        );
+
+                        if (onClick) {
+                            return (
+                                <button
+                                    key={label}
+                                    type="button"
+                                    onClick={onClick}
+                                    className={classes}
+                                    aria-label={iconOnly ? label : undefined}
+                                    title={iconOnly ? label : undefined}
+                                >
+                                    {content}
+                                </button>
+                            );
+                        }
+
+                        return (
+                            <Link
+                                key={label}
+                                to={to}
+                                className={classes}
+                                aria-label={iconOnly ? label : undefined}
+                                title={iconOnly ? label : undefined}
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {content}
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
         </nav>

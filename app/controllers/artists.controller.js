@@ -99,9 +99,9 @@ exports.registerAsArtist = async (req, res) => {
         await client.query('BEGIN');
         const password_hash = await bcrypt.hash(password, 10);
 
-        const userResult = await client.query(`INSERT INTO users (nome, email, password_hash, tipo) 
+        const userResult = await client.query(`INSERT INTO users (nome, email, password_hash, isArtist) 
                 VALUES ($1, $2, $3, 'artista')
-                RETURNING id, nome, email, tipo, created_at`,
+                RETURNING id, nome, email, isArtist, created_at`,
             [nome, email, password_hash]);
 
         const user = userResult.rows[0];
