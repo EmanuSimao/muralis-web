@@ -1,13 +1,45 @@
 import { muralisApi } from "../http-common";
 
 class UsersDataService {
-    create(data) {
-        return muralisApi.post('/users/register', data)
+    // async create(data) {
+    //     return await muralisApi.post(
+    //         '/users/', 
+    //         data
+    //     )
+    // }
+
+    async register(data) {
+        return await muralisApi.post(
+            '/auth/register',
+            data
+        )
     }
 
-    // findOne(){
-    //     return muralisApi.get('/users/:id')
-    // }
+    async login(data) {
+        return await muralisApi.post(
+            '/auth/login',
+            data)
+    }
+
+    async logout() {
+        return await muralisApi.post(
+            '/auth/logout',
+            {}
+        )
+    }
+
+    async currentUser() {
+        return await muralisApi.get(
+            '/auth/me'
+        )
+    }
+
+    async updateUser(data){
+        return await muralisApi.put(
+            '/users/edit',
+            data
+        )
+    }
 }
 
 export default new UsersDataService();

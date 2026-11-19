@@ -1,8 +1,8 @@
-import { RouterProvider } from 'react-router'
-import { router } from './router'
+import { RouterProvider } from "react-router";
+import { router } from "./router";
 // import { useState } from 'react'
 
-export default function App(){
+export default function App() {
   // const [token, setToken] = useState();
-  return <RouterProvider router={ router } />
+  return <RouterProvider router={router} />;
 }

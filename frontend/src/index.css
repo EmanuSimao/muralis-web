@@ -3,15 +3,12 @@
 
 @theme {
     --color-bg: #ffffff;
-
     --font-display: "Bai Jamjuree", serif;
-    /* --font-sans: "Inter", system-ui, sans-serif; */
-
-    /* --color-register: #c5c5c5; */
     --color-register: #f4f4f4;
     --color-current: #898b8d;
     --color-setas: #c4c4c4;
     --text-font: #494949;
+    --color-font: #494949;
     --color-newsletter: #1A492F;
     --color-modal: #f5f7f6;
     --color-error: #b3261e;
@@ -25,18 +22,10 @@
   box-sizing: border-box;
 }
 
-
 body {
     margin: 0;
     overflow-x: hidden;
     background-color: var(--color-bg);
     color: var(--color-font);
     font-family: var(--font-display);
-}
-
-select {
-    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 7px center;
-    background-size: 18px;
 }
